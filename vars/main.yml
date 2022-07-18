@@ -1,0 +1,6 @@
+---
+# vars file for nginx
+packages: ['nginx', 'openssl']
+service_url: ""
+owner_os: "www-data"
+group_os: "www-data"

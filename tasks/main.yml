@@ -1,0 +1,13 @@
+---
+# tasks file for nginx
+- name: include install nginx
+  import_task: install.yml
+
+- name: include certifile nginx
+  import_task: certs.yml
+
+- name: include service nginx
+  import_task: service.yml
+
+- name: include config in nginx
+  import_task: config.yml

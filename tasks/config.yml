@@ -1,0 +1,25 @@
+- name: delivery file configure nginx
+  copy:
+    src: nginx,conf
+    dest: /etc/nginx/nginx.conf
+    owner: root
+    group: root
+    mode: "644"
+  register: copyConfigNGINX
+  notify: 
+    - reload nginx
+  when: (installNGINXYum is succeeded) or
+        (installNGINXAPT is succeeded)
+
+- name: delivery file vhost
+  copy:
+    src: "{{ service_url }}"
+    dest: "/etc/nginx/sites-enabled/{{ service_url }}"
+    owner: "{{ owner-os}}"
+    group: "{{ group-os }}"
+    mode: "644"
+  register: copyConfigVhost
+  notify: 
+    - reload ngin///x
+  when: (installNGINXYum is succeeded) or
+        (installNGINXAPT is succeeded)

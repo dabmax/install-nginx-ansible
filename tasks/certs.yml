@@ -1,0 +1,14 @@
+- name: "delivery certs {{ service_url }}"
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/nginx/ssl/{{ item }}"
+    owner: root
+    group: root
+    mode: "0644"
+  register: copyCertNGINX
+  with_items:
+    - cert.pem
+    - key.pem
+    - chain.pem
+  when: (installNGINXYum is succeeded) or
+        (installNGINXAPT is succeeded)

@@ -1,0 +1,13 @@
+- name: install nginx yum
+  yum:
+    name: "{{ packages }}"
+    state: present
+  register: installNGINXYum
+  when: ansible_distribution == "CentOS"
+
+- name: install nginx with apt
+  apt:
+    name: "{{ packages }}"
+    state: present
+  register: installNGINXAPT
+  when: ansible_distribution == "Ubuntu"

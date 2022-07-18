@@ -1,0 +1,7 @@
+- name: configuration service nginx
+  service:
+    name: nginx
+    state: present
+    enabled: yes
+  when: (installNGINXYum is succeeded) or
+        (installNGINXAPT is succeeded)
